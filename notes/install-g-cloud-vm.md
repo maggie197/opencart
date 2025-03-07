@@ -126,7 +126,7 @@ EXIT;
 
  ## <span style="color: #3CB4B3;">Step 5: Download and Install OpenCart
 
- ### Download OpenCart
+ #### Download OpenCart
 
 Navigate to the web root:
 
@@ -201,3 +201,16 @@ sudo systemctl restart apache2
 
 3. After installation, login to admin and delete the install directory
 
+### Note:
+If you have an ephemeral (non-static) IP addresses. IP address will have to be updated in congif.php files:
+
+To check for files:
+```
+ls /var/www/html/
+```
+
+Edit file:
+```
+sudo nano /var/www/html/config.php
+sudo nano /var/www/html/admin/config.php
+```
