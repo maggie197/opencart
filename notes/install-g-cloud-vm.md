@@ -214,3 +214,34 @@ Edit file:
 sudo nano /var/www/html/config.php
 sudo nano /var/www/html/admin/config.php
 ```
+
+<details>
+  <summary> <h3> Connect via SFTP to modify files using FileZilla</h3> </summary>
+
+ Step 1: Install FileZilla (SFTP Client)
+
+ Step 2: Get Your VM External IP and Key File
+ 
+ 1. Go to Google Cloud Console → Compute Engine → VM instances.
+ 2. Find your OpenCart VM and note down the External IP
+ 3. Click SSH → View gcloud command (top-right).
+ 4. Copy the path to your private key file. It usually looks like:
+```
+/home/your-username/.ssh/google_compute_engine
+```
+
+Step 3: Connect to Your VM Using FileZilla
+
+1. Open FileZilla → Click File → Site Manager.
+
+2. Create a new site and fill in the following:
+   * Protocol: SFTP - SSH File Transfer Protocol
+   * Host: <YOUR_VM_EXTERNAL_IP>
+   * Port: 22
+   * Logon Type: Key file
+   * User: your-username
+   * Key file: Browse to your private key file (e.g., /home/your-username/.ssh/google_compute_engine)
+ 3. Click Connect.
+
+</details>
+
