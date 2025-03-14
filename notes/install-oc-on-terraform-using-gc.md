@@ -164,7 +164,7 @@ Once you're logged into the instance, follow these steps to install OpenCart:
 
 8. Navigate to your OpenCart Files and rename config files:
 ```
- cd /var/www/html/upload
+ cd /var/www/html/
 
 ```
 
@@ -173,15 +173,10 @@ sudo mv config-dist.php config.php
 sudo mv admin/config-dist.php admin/config.php
 
 ```
-9. Remove the Default Apache Page:
-    
-```
-    sudo rm /var/www/html/index.html
-```
 
 10. Finalize OpenCart Installation
 
-    1. Visit: http://[EXTERNAL_IP]/upload/install/
+    1. Visit: http://[EXTERNAL_IP]/install/
     
 If missing any required PHP extensions for OpenCart. You need to install and enable them:
 
