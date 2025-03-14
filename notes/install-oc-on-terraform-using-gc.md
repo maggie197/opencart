@@ -149,7 +149,7 @@ Once you're logged into the instance, follow these steps to install OpenCart:
     ```
     CREATE DATABASE opencart;
     CREATE USER 'opencartuser'@'localhost' IDENTIFIED BY 'yourpassword';
-    GRANT ALL PRIVILEGES ON opencart.* TO 'opencartuser'@'localhost';
+    GRANT ALL PRIVILEGES ON opencart.* TO 'opencart_user'@'localhost';
     FLUSH PRIVILEGES;
     EXIT;
     ```
@@ -173,14 +173,28 @@ sudo mv config-dist.php config.php
 sudo mv admin/config-dist.php admin/config.php
 
 ```
+9. Remove the Default Apache Page:
+    
+```
+    sudo rm /var/www/html/index.html
+```
 
-9. Finalize OpenCart Installation
+10. Finalize OpenCart Installation
 
-  1. Visit: http://[EXTERNAL_IP]/install/
+    1. Visit: http://[EXTERNAL_IP]/upload/install/
+    
+If missing any required PHP extensions for OpenCart. You need to install and enable them:
 
-  2. Follow the OpenCart installation wizard:
+  * Update packege list, install missing PHP extensions and restart Apache:
+    ```
+    sudo apt update
+    sudo apt install -y php-gd php-zip
+    sudo systemctl restart apache2
 
-  * Database Settings:
+    ```
+    2. Follow the OpenCart installation wizard:
+
+    * Database Settings:
       * Host: localhost
       * Database: opencart
       * Username: opencart_user
