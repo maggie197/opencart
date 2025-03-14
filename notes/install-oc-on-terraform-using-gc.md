@@ -162,9 +162,9 @@ Once you're logged into the instance, follow these steps to install OpenCart:
 
     ```
 
-8. Navigate to your OpenCart Files and rename config:
+8. Navigate to your OpenCart Files and rename config files:
 ```
- cd /var/www/html
+ cd /var/www/html/upload
 
 ```
 
