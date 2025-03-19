@@ -1,0 +1,39 @@
+name: Terraform CI/CD for GCP
+
+on:
+  push:
+    branches:
+      - testing
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Authenticate with GCP
+        run: |
+          echo '${{ secrets.GCP_CREDENTIALS }}' > terraform-key.json
+          gcloud auth activate-service-account --key-file=terraform-key.json
+          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+          gcloud config set compute/zone europe-west2-b
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Validate Terraform
+        run: terraform validate
+
+      - name: Plan Terraform
+        run: terraform plan
+
+      - name: Apply Terraform (Manual Approval)
+        if: github.event_name == 'push'
+        run: terraform apply -auto-approve
