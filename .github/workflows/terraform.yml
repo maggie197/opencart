@@ -1,4 +1,4 @@
-name: TERRAFORM_CI/CD
+name: TERRAFORM_CI_CD_FOR_GCP
 
 on:
   push:
@@ -37,5 +37,3 @@ jobs:
       - name: Apply Terraform (Manual Approval)
         if: github.event_name == 'push'
         run: terraform apply -auto-approve
-
-
