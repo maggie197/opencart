@@ -20,10 +20,11 @@ jobs:
 
       - name: Authenticate with GCP
         run: |
-          echo '${{ secrets.GCP_CREDENTIALS }}' > terraform-key.json
+          echo "${{ secrets.GCP_CREDENTIALS }}" | base64 --decode > terraform-key.json
           gcloud auth activate-service-account --key-file=terraform-key.json
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           gcloud config set compute/zone europe-west2-b
+
 
       - name: Initialize Terraform
         run: terraform init
